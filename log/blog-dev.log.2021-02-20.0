@@ -1,0 +1,467 @@
+2021-02-20 00:02:00.396  INFO 4944 --- [restartedMain] com.godz.myblog.MyblogApplication        : Starting MyblogApplication using Java 1.8.0_221 on LAPTOP-3Q6O6ET5 with PID 4944 (F:\idea_javaspace\myblog\target\classes started by 59885 in F:\idea_javaspace\myblog)
+2021-02-20 00:02:00.402 DEBUG 4944 --- [restartedMain] com.godz.myblog.MyblogApplication        : Running with Spring Boot v2.4.2, Spring v5.3.3
+2021-02-20 00:02:00.402  INFO 4944 --- [restartedMain] com.godz.myblog.MyblogApplication        : The following profiles are active: dev
+2021-02-20 00:02:00.511  INFO 4944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-20 00:02:00.512  INFO 4944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-20 00:02:01.775  INFO 4944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-20 00:02:01.781  INFO 4944 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-20 00:02:01.781  INFO 4944 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-02-20 00:02:01.846  INFO 4944 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-20 00:02:01.846  INFO 4944 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1330 ms
+2021-02-20 00:02:02.472  INFO 4944 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-20 00:02:02.563  INFO 4944 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-20 00:02:02.843  INFO 4944 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-20 00:02:02.868  INFO 4944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-20 00:02:02.877  INFO 4944 --- [restartedMain] com.godz.myblog.MyblogApplication        : Started MyblogApplication in 3.125 seconds (JVM running for 4.086)
+2021-02-20 00:02:02.913  INFO 4944 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-20 00:02:02.913  INFO 4944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-20 00:02:02.914  INFO 4944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-02-20 00:02:02.938  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 00:02:02.952  INFO 4944 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-20 00:02:03.067  INFO 4944 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-20 00:02:03.100 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 00:02:03.123 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 00:02:03.155 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 00:02:03.157 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 00:02:03.157 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 00:02:03.161 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 00:02:03.162 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 00:02:03.163 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 00:02:03.166 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 00:02:03.168  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 00:02:03.866  INFO 4944 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:02:03.867 DEBUG 4944 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:02:03.868 DEBUG 4944 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:02:03.870 DEBUG 4944 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:02:03.873 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:02:03.874 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:02:03.876 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:02:03.878 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:02:03.878 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:02:03.884 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:02:03.885 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:02:03.886 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:02:03.894 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:02:03.895  INFO 4944 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:02:05.642  INFO 4944 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/types/-1', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.TypeShowController.types', args=[1, -1, {}]}
+2021-02-20 00:02:05.651 DEBUG 4944 --- [http-nio-8080-exec-5] c.g.m.dao.TypeDao.getAllTypeAndBlog      : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title,b.type_id from myblog.t_type t,myblog.t_blog b where t.id = b.type_id
+2021-02-20 00:02:05.651 DEBUG 4944 --- [http-nio-8080-exec-5] c.g.m.dao.TypeDao.getAllTypeAndBlog      : ==> Parameters: 
+2021-02-20 00:02:05.655 DEBUG 4944 --- [http-nio-8080-exec-5] c.g.m.dao.TypeDao.getAllTypeAndBlog      : <==      Total: 3
+2021-02-20 00:02:05.660 DEBUG 4944 --- [http-nio-8080-exec-5] com.godz.myblog.dao.BlogDao.getByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count, b.update_time, b.description,t.name ,u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id and b.type_id = ? order by b.update_time desc
+2021-02-20 00:02:05.660 DEBUG 4944 --- [http-nio-8080-exec-5] com.godz.myblog.dao.BlogDao.getByTypeId  : ==> Parameters: 58(Long)
+2021-02-20 00:02:05.661 DEBUG 4944 --- [http-nio-8080-exec-5] com.godz.myblog.dao.BlogDao.getByTypeId  : <==      Total: 2
+2021-02-20 00:02:05.662  INFO 4944 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Result : types
+2021-02-20 00:02:05.775  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:02:05.776 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:02:05.776 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:02:05.777 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:02:05.778 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:02:05.779 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:02:05.780 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:02:05.781 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:02:05.781 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:02:05.782 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:02:05.783 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:02:05.783 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:02:05.784 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:02:05.785  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:02:07.493  INFO 4944 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/archives', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.ArchiveShowController.archive', args=[{}]}
+2021-02-20 00:02:07.496 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from myblog.t_blog b left outer join myblog.t_type t on b.type_id = t.id order by b.update_time desc
+2021-02-20 00:02:07.497 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==> Parameters: 
+2021-02-20 00:02:07.509 DEBUG 4944 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getAllBlogQuery   : <==      Total: 3
+2021-02-20 00:02:07.510  INFO 4944 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : archives
+2021-02-20 00:02:07.738  INFO 4944 --- [http-nio-8080-exec-3] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:02:07.741 DEBUG 4944 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:02:07.743 DEBUG 4944 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:02:07.745 DEBUG 4944 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:02:07.747 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:02:07.749 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:02:07.752 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:02:07.754 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:02:07.755 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:02:07.757 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:02:07.759 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:02:07.759 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:02:07.760 DEBUG 4944 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:02:07.761  INFO 4944 --- [http-nio-8080-exec-3] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:02:08.839  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/music', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MusicShowController.about', args=[]}
+2021-02-20 00:02:08.844  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : music
+2021-02-20 00:02:13.761  INFO 4944 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/friends', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.FriendsShowController.friends', args=[{}]}
+2021-02-20 00:02:13.765 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.FriendLinkDao.listFriendLink   : ==>  Preparing: select * from myblog.t_friend order by t_friend.create_time desc
+2021-02-20 00:02:13.765 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.FriendLinkDao.listFriendLink   : ==> Parameters: 
+2021-02-20 00:02:13.792 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.FriendLinkDao.listFriendLink   : <==      Total: 1
+2021-02-20 00:02:13.793  INFO 4944 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Result : friends
+2021-02-20 00:02:14.122  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:02:14.123 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:02:14.123 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:02:14.126 DEBUG 4944 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:02:14.127 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:02:14.128 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:02:14.129 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:02:14.129 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:02:14.130 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:02:14.130 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:02:14.131 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:02:14.132 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:02:14.133 DEBUG 4944 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:02:14.134  INFO 4944 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:10:05.935  INFO 4944 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 00:10:05.940 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 00:10:05.941 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 00:10:05.942 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 00:10:05.943 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 00:10:05.943 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 00:10:05.945 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 00:10:05.946 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 00:10:05.946 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 00:10:05.948 DEBUG 4944 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 00:10:05.949  INFO 4944 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 00:10:06.182  INFO 4944 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:10:06.182 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:10:06.182 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:10:06.183 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:10:06.183 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:10:06.183 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:10:06.184 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:10:06.185 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:10:06.185 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:10:06.186 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:10:06.188 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:10:06.188 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:10:06.189 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:10:06.190  INFO 4944 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:10:19.602  INFO 4944 --- [http-nio-8080-exec-7] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/picture', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.PictureShowController.friends', args=[{}]}
+2021-02-20 00:10:19.604 DEBUG 4944 --- [http-nio-8080-exec-7] c.g.myblog.dao.PictureDao.listPicture    : ==>  Preparing: select * from myblog.t_picture order by t_picture.id desc
+2021-02-20 00:10:19.604 DEBUG 4944 --- [http-nio-8080-exec-7] c.g.myblog.dao.PictureDao.listPicture    : ==> Parameters: 
+2021-02-20 00:10:19.623 DEBUG 4944 --- [http-nio-8080-exec-7] c.g.myblog.dao.PictureDao.listPicture    : <==      Total: 1
+2021-02-20 00:10:19.624  INFO 4944 --- [http-nio-8080-exec-7] com.godz.myblog.aspect.LogAspect         : Result : picture
+2021-02-20 00:10:19.981  INFO 4944 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:10:19.982 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:10:19.982 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:10:19.983 DEBUG 4944 --- [http-nio-8080-exec-2] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:10:19.983 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:10:19.983 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:10:19.984 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:10:19.984 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:10:19.984 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:10:19.992 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:10:19.992 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:10:19.993 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:10:19.994 DEBUG 4944 --- [http-nio-8080-exec-2] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:10:19.994  INFO 4944 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 00:10:25.380  INFO 4944 --- [http-nio-8080-exec-7] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/about', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.AboutShowController.about', args=[]}
+2021-02-20 00:10:25.382  INFO 4944 --- [http-nio-8080-exec-7] com.godz.myblog.aspect.LogAspect         : Result : about
+2021-02-20 00:10:25.626  INFO 4944 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 00:10:25.627 DEBUG 4944 --- [http-nio-8080-exec-6] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 00:10:25.627 DEBUG 4944 --- [http-nio-8080-exec-6] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 00:10:25.628 DEBUG 4944 --- [http-nio-8080-exec-6] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 00:10:25.630 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 00:10:25.630 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 00:10:25.631 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 00:10:25.631 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 00:10:25.631 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 00:10:25.632 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 00:10:25.633 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 00:10:25.633 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 00:10:25.634 DEBUG 4944 --- [http-nio-8080-exec-6] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 00:10:25.634  INFO 4944 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 22:05:05.459  INFO 10660 --- [restartedMain] com.godz.myblog.MyblogApplication        : Starting MyblogApplication using Java 1.8.0_221 on LAPTOP-3Q6O6ET5 with PID 10660 (F:\idea_javaspace\myblog\target\classes started by 59885 in F:\idea_javaspace\myblog)
+2021-02-20 22:05:05.485 DEBUG 10660 --- [restartedMain] com.godz.myblog.MyblogApplication        : Running with Spring Boot v2.4.2, Spring v5.3.3
+2021-02-20 22:05:05.485  INFO 10660 --- [restartedMain] com.godz.myblog.MyblogApplication        : The following profiles are active: dev
+2021-02-20 22:05:05.563  INFO 10660 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-20 22:05:05.564  INFO 10660 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-20 22:05:08.083  INFO 10660 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-20 22:05:08.093  INFO 10660 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-20 22:05:08.094  INFO 10660 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-02-20 22:05:08.274  INFO 10660 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-20 22:05:08.274  INFO 10660 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2708 ms
+2021-02-20 22:05:09.398  INFO 10660 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-20 22:05:09.514  INFO 10660 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-20 22:05:10.868  INFO 10660 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-20 22:05:10.894  INFO 10660 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-20 22:05:10.902  INFO 10660 --- [restartedMain] com.godz.myblog.MyblogApplication        : Started MyblogApplication in 6.298 seconds (JVM running for 7.686)
+2021-02-20 22:05:41.412  INFO 10660 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-20 22:05:41.412  INFO 10660 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-20 22:05:41.414  INFO 10660 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-02-20 22:05:41.454  INFO 10660 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 22:05:41.474  INFO 10660 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-20 22:05:41.724  INFO 10660 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-20 22:05:41.836 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 22:05:41.870 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 22:05:41.911 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 22:05:41.913 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 22:05:41.914 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 22:05:41.919 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 22:05:41.921 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 22:05:41.921 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 22:05:41.925 DEBUG 10660 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 22:05:41.926  INFO 10660 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 22:05:42.767  INFO 10660 --- [http-nio-8080-exec-3] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 22:05:42.770 DEBUG 10660 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 22:05:42.770 DEBUG 10660 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 22:05:42.773 DEBUG 10660 --- [http-nio-8080-exec-3] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 22:05:42.774 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 22:05:42.775 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 22:05:42.777 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 22:05:42.780 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 22:05:42.781 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 22:05:42.789 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 22:05:42.790 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 22:05:42.790 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 22:05:42.797 DEBUG 10660 --- [http-nio-8080-exec-3] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 22:05:42.798  INFO 10660 --- [http-nio-8080-exec-3] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 22:05:58.381  INFO 10660 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/message', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.message', args=[]}
+2021-02-20 22:05:58.385  INFO 10660 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Result : message
+2021-02-20 22:05:58.523  INFO 10660 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 22:05:58.523 DEBUG 10660 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 22:05:58.523 DEBUG 10660 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 22:05:58.524 DEBUG 10660 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 22:05:58.525 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 22:05:58.525 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 22:05:58.526 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 22:05:58.526 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 22:05:58.527 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 22:05:58.528 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 22:05:58.528 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 22:05:58.529 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 22:05:58.529 DEBUG 10660 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 22:05:58.530  INFO 10660 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 22:05:58.574  INFO 10660 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/messagecomment', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.messages', args=[{}]}
+2021-02-20 22:05:58.578 DEBUG 10660 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : ==>  Preparing: select * from myblog.t_message c where c.parent_message_id = ? order by c.create_time desc
+2021-02-20 22:05:58.578 DEBUG 10660 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : ==> Parameters: -1(Long)
+2021-02-20 22:05:58.580 DEBUG 10660 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : <==      Total: 0
+2021-02-20 22:05:58.580  INFO 10660 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Result : message::messageList
+2021-02-20 23:11:06.707  INFO 5168 --- [restartedMain] com.godz.myblog.MyblogApplication        : Starting MyblogApplication using Java 1.8.0_221 on LAPTOP-3Q6O6ET5 with PID 5168 (F:\idea_javaspace\myblog\target\classes started by 59885 in F:\idea_javaspace\myblog)
+2021-02-20 23:11:06.751 DEBUG 5168 --- [restartedMain] com.godz.myblog.MyblogApplication        : Running with Spring Boot v2.4.2, Spring v5.3.3
+2021-02-20 23:11:06.751  INFO 5168 --- [restartedMain] com.godz.myblog.MyblogApplication        : The following profiles are active: dev
+2021-02-20 23:11:06.849  INFO 5168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-20 23:11:06.849  INFO 5168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-20 23:11:09.443  INFO 5168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-20 23:11:09.471  INFO 5168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-20 23:11:09.471  INFO 5168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-02-20 23:11:09.582  INFO 5168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-20 23:11:09.582  INFO 5168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2732 ms
+2021-02-20 23:11:10.490  INFO 5168 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-20 23:11:10.611  INFO 5168 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-20 23:11:11.011  INFO 5168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-20 23:11:11.039  INFO 5168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-20 23:11:11.047  INFO 5168 --- [restartedMain] com.godz.myblog.MyblogApplication        : Started MyblogApplication in 5.216 seconds (JVM running for 6.718)
+2021-02-20 23:11:31.792  INFO 5168 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-20 23:11:31.792  INFO 5168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-20 23:11:31.793  INFO 5168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-02-20 23:11:31.827  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 23:11:31.849  INFO 5168 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-20 23:11:32.051  INFO 5168 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-20 23:11:32.135 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 23:11:32.176 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 23:11:32.212 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 23:11:32.214 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 23:11:32.214 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 23:11:32.220 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 23:11:32.221 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 23:11:32.222 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 23:11:32.225 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 23:11:32.227  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 23:11:34.438  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:11:34.439 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:11:34.439 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:11:34.443 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:11:34.444 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:11:34.444 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:11:34.445 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:11:34.446 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:11:34.446 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:11:34.450 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:11:34.451 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:11:34.451 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:11:34.454 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:11:34.455  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:11:36.802  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/archives', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.ArchiveShowController.archive', args=[{}]}
+2021-02-20 23:11:36.805 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from myblog.t_blog b left outer join myblog.t_type t on b.type_id = t.id order by b.update_time desc
+2021-02-20 23:11:36.805 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==> Parameters: 
+2021-02-20 23:11:36.810 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getAllBlogQuery   : <==      Total: 3
+2021-02-20 23:11:36.812  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : archives
+2021-02-20 23:11:36.918  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:11:36.918 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:11:36.919 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:11:36.919 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:11:36.920 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:11:36.921 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:11:36.922 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:11:36.923 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:11:36.924 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:11:36.925 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:11:36.927 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:11:36.927 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:11:36.928 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:11:36.929  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:11:40.469  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/message', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.message', args=[]}
+2021-02-20 23:11:40.472  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Result : message
+2021-02-20 23:11:40.565  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:11:40.566 DEBUG 5168 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:11:40.566 DEBUG 5168 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:11:40.567 DEBUG 5168 --- [http-nio-8080-exec-1] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:11:40.568 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:11:40.568 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:11:40.569 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:11:40.570 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:11:40.570 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:11:40.571 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:11:40.572 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:11:40.574 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:11:40.577 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:11:40.579  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:11:40.618  INFO 5168 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/messagecomment', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.messages', args=[{}]}
+2021-02-20 23:11:40.620 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.m.dao.MessageDao.findByParentIdNull  : ==>  Preparing: select * from myblog.t_message c where c.parent_message_id = ? order by c.create_time desc
+2021-02-20 23:11:40.621 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.m.dao.MessageDao.findByParentIdNull  : ==> Parameters: -1(Long)
+2021-02-20 23:11:40.623 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.m.dao.MessageDao.findByParentIdNull  : <==      Total: 0
+2021-02-20 23:11:40.625  INFO 5168 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Result : message::messageList
+2021-02-20 23:46:20.682  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 23:46:20.785 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 23:46:20.787 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 23:46:20.809 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 23:46:20.810 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 23:46:20.810 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 23:46:20.814 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 23:46:20.814 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 23:46:20.814 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 23:46:20.816 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 23:46:20.817  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 23:46:21.530  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:21.532 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:21.533 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:21.534 DEBUG 5168 --- [http-nio-8080-exec-5] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:21.535 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:21.536 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:21.537 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:21.540 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:21.540 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:21.549 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:21.550 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:21.550 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:21.562 DEBUG 5168 --- [http-nio-8080-exec-5] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:21.563  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:22.451  INFO 5168 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/archives', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.ArchiveShowController.archive', args=[{}]}
+2021-02-20 23:46:22.452 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from myblog.t_blog b left outer join myblog.t_type t on b.type_id = t.id order by b.update_time desc
+2021-02-20 23:46:22.452 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getAllBlogQuery   : ==> Parameters: 
+2021-02-20 23:46:22.465 DEBUG 5168 --- [http-nio-8080-exec-6] c.g.myblog.dao.BlogDao.getAllBlogQuery   : <==      Total: 3
+2021-02-20 23:46:22.466  INFO 5168 --- [http-nio-8080-exec-6] com.godz.myblog.aspect.LogAspect         : Result : archives
+2021-02-20 23:46:22.819  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:22.820 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:22.821 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:22.825 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:22.827 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:22.827 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:22.828 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:22.829 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:22.829 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:22.831 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:22.832 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:22.833 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:22.834 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:22.834  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:25.448  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/music', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MusicShowController.about', args=[]}
+2021-02-20 23:46:25.453  INFO 5168 --- [http-nio-8080-exec-5] com.godz.myblog.aspect.LogAspect         : Result : music
+2021-02-20 23:46:28.098  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/message', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.message', args=[]}
+2021-02-20 23:46:28.098  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : message
+2021-02-20 23:46:29.618  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:29.619 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:29.619 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:29.620 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:29.621 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:29.621 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:29.622 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:29.624 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:29.626 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:29.628 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:29.629 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:29.630 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:29.630 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:29.631  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:29.665  INFO 5168 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/messagecomment', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.MessageController.messages', args=[{}]}
+2021-02-20 23:46:29.666 DEBUG 5168 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : ==>  Preparing: select * from myblog.t_message c where c.parent_message_id = ? order by c.create_time desc
+2021-02-20 23:46:29.666 DEBUG 5168 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : ==> Parameters: -1(Long)
+2021-02-20 23:46:29.669 DEBUG 5168 --- [http-nio-8080-exec-2] c.g.m.dao.MessageDao.findByParentIdNull  : <==      Total: 0
+2021-02-20 23:46:29.669  INFO 5168 --- [http-nio-8080-exec-2] com.godz.myblog.aspect.LogAspect         : Result : message::messageList
+2021-02-20 23:46:32.121  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/friends', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.FriendsShowController.friends', args=[{}]}
+2021-02-20 23:46:32.135 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.FriendLinkDao.listFriendLink   : ==>  Preparing: select * from myblog.t_friend order by t_friend.create_time desc
+2021-02-20 23:46:32.135 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.FriendLinkDao.listFriendLink   : ==> Parameters: 
+2021-02-20 23:46:32.149 DEBUG 5168 --- [http-nio-8080-exec-1] c.g.m.dao.FriendLinkDao.listFriendLink   : <==      Total: 1
+2021-02-20 23:46:32.150  INFO 5168 --- [http-nio-8080-exec-1] com.godz.myblog.aspect.LogAspect         : Result : friends
+2021-02-20 23:46:32.299  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:32.300 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:32.300 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:32.301 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:32.301 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:32.301 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:32.302 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:32.302 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:32.303 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:32.303 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:32.304 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:32.304 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:32.304 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:32.305  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:34.829  INFO 5168 --- [http-nio-8080-exec-10] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/types/-1', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.TypeShowController.types', args=[1, -1, {}]}
+2021-02-20 23:46:34.916 DEBUG 5168 --- [http-nio-8080-exec-10] c.g.m.dao.TypeDao.getAllTypeAndBlog      : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title,b.type_id from myblog.t_type t,myblog.t_blog b where t.id = b.type_id
+2021-02-20 23:46:34.916 DEBUG 5168 --- [http-nio-8080-exec-10] c.g.m.dao.TypeDao.getAllTypeAndBlog      : ==> Parameters: 
+2021-02-20 23:46:34.918 DEBUG 5168 --- [http-nio-8080-exec-10] c.g.m.dao.TypeDao.getAllTypeAndBlog      : <==      Total: 3
+2021-02-20 23:46:34.922 DEBUG 5168 --- [http-nio-8080-exec-10] com.godz.myblog.dao.BlogDao.getByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count, b.update_time, b.description,t.name ,u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id and b.type_id = ? order by b.update_time desc
+2021-02-20 23:46:34.922 DEBUG 5168 --- [http-nio-8080-exec-10] com.godz.myblog.dao.BlogDao.getByTypeId  : ==> Parameters: 58(Long)
+2021-02-20 23:46:34.926 DEBUG 5168 --- [http-nio-8080-exec-10] com.godz.myblog.dao.BlogDao.getByTypeId  : <==      Total: 2
+2021-02-20 23:46:34.927  INFO 5168 --- [http-nio-8080-exec-10] com.godz.myblog.aspect.LogAspect         : Result : types
+2021-02-20 23:46:35.083  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:35.084 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:35.084 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:35.084 DEBUG 5168 --- [http-nio-8080-exec-4] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:35.085 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:35.086 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:35.086 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:35.087 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:35.087 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:35.088 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:35.088 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:35.089 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:35.090 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:35.091  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:37.505  INFO 5168 --- [http-nio-8080-exec-10] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/about', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.AboutShowController.about', args=[]}
+2021-02-20 23:46:37.507  INFO 5168 --- [http-nio-8080-exec-10] com.godz.myblog.aspect.LogAspect         : Result : about
+2021-02-20 23:46:37.827  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:37.830 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:37.831 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:37.832 DEBUG 5168 --- [http-nio-8080-exec-8] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:37.832 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:37.832 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:37.833 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:37.833 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:37.833 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:37.834 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:37.834 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:37.834 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:37.834 DEBUG 5168 --- [http-nio-8080-exec-8] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:37.835  INFO 5168 --- [http-nio-8080-exec-8] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
+2021-02-20 23:46:43.673  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.index', args=[{}, 1, {}]}
+2021-02-20 23:46:43.679 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==>  Preparing: SELECT count(0) FROM myblog.t_blog b, myblog.t_type t, myblog.t_user u WHERE b.type_id = t.id AND u.id = b.user_id
+2021-02-20 23:46:43.680 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : ==> Parameters: 
+2021-02-20 23:46:43.684 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.d.BlogDao.getFirstPageBlog_COUNT   : <==      Total: 1
+2021-02-20 23:46:43.685 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==>  Preparing: select b.id,b.title,b.first_picture, b.views, b.comment_count,b.create_time,b.update_time,b.description, t.name , u.nickname, u.avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id order by b.create_time desc LIMIT ?
+2021-02-20 23:46:43.685 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : ==> Parameters: 10(Integer)
+2021-02-20 23:46:43.689 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.myblog.dao.BlogDao.getFirstPageBlog  : <==      Total: 3
+2021-02-20 23:46:43.690 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==>  Preparing: select * from myblog.t_blog where t_blog.recommend = true order by t_blog.create_time desc limit 4;
+2021-02-20 23:46:43.690 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : ==> Parameters: 
+2021-02-20 23:46:43.691 DEBUG 5168 --- [http-nio-8080-exec-4] c.g.m.dao.BlogDao.getAllRecommendBlog    : <==      Total: 3
+2021-02-20 23:46:43.692  INFO 5168 --- [http-nio-8080-exec-4] com.godz.myblog.aspect.LogAspect         : Result : index
+2021-02-20 23:46:44.110  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Request : {url='http://localhost:8080/footer/blogmessage', ip='0:0:0:0:0:0:0:1', classMethod='com.godz.myblog.controller.IndexController.blogMessage', args=[{}]}
+2021-02-20 23:46:44.114 DEBUG 5168 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==>  Preparing: select count(*) from myblog.t_blog
+2021-02-20 23:46:44.115 DEBUG 5168 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : ==> Parameters: 
+2021-02-20 23:46:44.118 DEBUG 5168 --- [http-nio-8080-exec-9] c.godz.myblog.dao.BlogDao.getBlogTotal   : <==      Total: 1
+2021-02-20 23:46:44.120 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==>  Preparing: select coalesce (sum(views),0) from myblog.t_blog
+2021-02-20 23:46:44.120 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : ==> Parameters: 
+2021-02-20 23:46:44.122 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.myblog.dao.BlogDao.getBlogViewTotal  : <==      Total: 1
+2021-02-20 23:46:44.122 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==>  Preparing: select count(*) from myblog.t_comment
+2021-02-20 23:46:44.123 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : ==> Parameters: 
+2021-02-20 23:46:44.124 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogCommentTotal    : <==      Total: 1
+2021-02-20 23:46:44.125 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==>  Preparing: select count(*) from myblog.t_message
+2021-02-20 23:46:44.125 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : ==> Parameters: 
+2021-02-20 23:46:44.127 DEBUG 5168 --- [http-nio-8080-exec-9] c.g.m.dao.BlogDao.getBlogMessageTotal    : <==      Total: 1
+2021-02-20 23:46:44.127  INFO 5168 --- [http-nio-8080-exec-9] com.godz.myblog.aspect.LogAspect         : Result : index :: blogMessage
