@@ -56,21 +56,18 @@
             <!--头像图片-->
             <img class="ui circular image" align="center" src="../static/images/touxiang.png" th:src="@{/images/touxiang.png}" style="width: 150px;height: 150px;">
         </div>
-        <div class="m-font-size-title-mediul" align="center">ONESTAR</div>
+        <div class="m-font-size-title-mediul" align="center">Godz</div>
 
         <div class="" align="center">
-            <a href="#" class="ui tencent circular icon button"><i class="user icon"></i></a>
+
             <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
             <a href="#" class="ui qq circular icon button" data-content="316392836" data-position="bottom center"><i class="qq icon"></i></a>
-            <a href="https://github.com/oneStarLR/" target="_blank" class="ui github circular icon button" data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon"></i></a>
-            <a href="https://onestar.blog.csdn.net/" target="_blank" class="ui csdn circular icon button" data-content="点击跳转CSDN" data-position="bottom center"><i class="copyright outline icon"></i></a>
-            <a href="#" class="ui email circular icon button" data-content="onestarlr@hotmail.com" data-position="bottom center"><i class="envelope  icon"></i></a>
+            <a href="https://github.com/hezhizhuoGod" target="_blank" class="ui github circular icon button" data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon"></i></a>
+            <!--<a href="https://onestar.blog.csdn.net/" target="_blank" class="ui csdn cir cular icon button" data-content="点击跳转CSDN" data-position="bottom center"><i class="copyright outline icon"></i></a>-->
+            <a href="#" class="ui email circular icon button" data-content="598853372@qq.com" data-position="bottom center"><i class="envelope  icon"></i></a>
         </div>
 
-        <div class="ui tencent-qr flowing popup transition hidden">
-            <img src="../static/images/oneStar.jpg" th:src="@{/images/oneStar.jpg}" alt="" class="ui rounded image" style="width: 110px">
-            <div align="center">公众号</div>
-        </div>
+
         <div class="ui wechat-qr flowing popup transition hidden">
             <img src="../static/images/oneStarWechat.jpg" th:src="@{/images/oneStarWechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
             <div align="center">微信</div>
@@ -80,12 +77,12 @@
             <div align="center">QQ</div>
         </div>
 
-        <div class="m-font-size-text" align="center">欢迎来到我的客栈，我是一颗星，夜空中最亮的那颗</div>
-        <hr style="width: 40%">
-        <h5 class="m-font-size-text-init-title m-margin-top-large">“大圣，此去欲何?”</h5>
-        <h5 class="m-font-size-text-init-title">“踏南天，碎凌霄”</h5>
-        <h5 class="m-font-size-text-init-title">“若一去不回……”</h5>
-        <h5 class="m-font-size-text-init-title">“便一去不回”</h5>
+        <!--<div class="m-font-size-text" align="center">欢迎来到我的客栈，我是一颗星，夜空中最亮的那颗</div>-->
+        <!--<hr style="width: 40%">-->
+        <!--<h5 class="m-font-size-text-init-title m-margin-top-large">“大圣，此去欲何?”</h5>-->
+        <!--<h5 class="m-font-size-text-init-title">“踏南天，碎凌霄”</h5>-->
+        <!--<h5 class="m-font-size-text-init-title">“若一去不回……”</h5>-->
+        <!--<h5 class="m-font-size-text-init-title">“便一去不回”</h5>-->
         <div id="waypoint" class="ui m-margin-top-large" align="center">
             <a href="#" th:href="@{/}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
             <a href="#" th:href="@{/types/-1}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==2} ? 'active'"><i class="clone outline icon"></i>分类</a>
@@ -111,7 +108,7 @@
         </div>
     </div>
     <div class="ui stackable m-container-mini m-opacity grid">
-        <div class="m-margin-tb-tiny four wide column" th:each="blog : ${recommendedBlogs}">
+        <div class="m-margin-tb-tiny eight wide column" th:each="blog : ${recommendedBlogs}">
             <a href="#" class="class_outer" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                 <img src="../static/images/backimg1.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
                 <span class="class_cover" >
@@ -210,7 +207,7 @@
     <!--容器-->
     <div class="ui center aligned container">
         <div class="ui inverted divided stackable grid">
-            <div class="four wide column">
+            <div class="eight wide column">
                 <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced m-margin-top-max" >联系我</div>
                 <!--<div id="newblog-container">-->
                 <!--<div class="ui inverted link list" th:fragment="newblogList">-->
@@ -218,46 +215,28 @@
                 <!--</div>-->
                 <!--</div>-->
                 <div class="ui inverted link list">
-                    <div href="#" class="m-text-thin">Email：onestarlr@hotmail.com</div>
-                    <div href="#" class="m-text-thin">QQ：316392836</div>
+                    <div href="#" class="m-text-thin">Email：598853372@qq.com</div>
+                    <div href="#" class="m-text-thin">QQ：598853372</div>
                 </div>
             </div>
 
-            <div class="four wide column" >
-                <div class="ui inverted link list">
-                    <div class="item">
-                        <!--微信二维码-->
-                        <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >关注公众号</div>
-                        <img src="../static/images/oneStar.jpg" th:src="@{/images/oneStar.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
-                    </div>
-                </div>
-            </div>
 
-            <div class="four wide column">
-                <div class="ui inverted link list">
-                    <div class="item">
-                        <!--微信二维码-->
-                        <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >问题交流（QQ群）</div>
-                        <img src="../static/images/QQ-question.jpg" th:src="@{/images/QQ-question.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
-                    </div>
-                </div>
-            </div>
             <!--博客运行时间统计-->
-            <div class="four wide column">
-                <div style="font-size: large;font-weight: bold" class="ui inverted  m-text-thin m-text-spaced m-margin-top">客栈信息</div>
+            <div class="eight wide column">
+                <div style="font-size: large;font-weight: bold" class="ui inverted  m-text-thin m-text-spaced m-margin-top">博客情况</div>
                 <!--<p id="htmer_time" class="item m-text-thin"></p>-->
                 <div id="blog-message">
-                    <div class="ui inverted link list" style="align-content: center;margin-top: 10px" th:fragment="blogMessage">
-                        <div class="m-text-thin" style="text-align: left;margin-left: 75px;">
+                        <div class="ui inverted link list" style="align-content: center;margin-top: 10px" th:fragment="blogMessage">
+                        <div class="m-text-thin" >
                             文章总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;" th:text="${blogTotal}"> 14 </h2> 篇
                         </div>
-                        <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                        <div class="m-text-thin" >
                             访问总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;" th:text="${blogViewTotal}"> 14 </h2> 次
                         </div>
-                        <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                        <div class="m-text-thin" >
                             评论总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;" th:text="${blogCommentTotal}"> 14 </h2> 条
                         </div>
-                        <div class="m-text-thin" style="text-align: left;margin-left: 75px">
+                        <div class="m-text-thin" >
                             留言总数： <h2 class="ui orange header m-inline-block m-margin-top-null" style="font-size:medium;" th:text="${blogMessageTotal}"> 14 </h2> 条
                         </div>
                     </div>
@@ -265,8 +244,8 @@
             </div>
         </div>
         <div class="ui inverted section divider"></div>
-        <div style="color: #F08047;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">我的客栈已营业：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
-        <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">赣ICP备20004408号-1</a>
+        <div style="color: #F08047;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">我的博客已经运行：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
+
     </div>
     </div>
 
@@ -314,7 +293,7 @@
     }
     function setTime() {
         /*此处为网站的创建时间*/
-        var create_time = Math.round(new Date(Date.UTC(2020, 01, 25, 15, 15, 15)).getTime() / 1000);
+        var create_time = Math.round(new Date(Date.UTC(2021, 00, 25, 15, 15, 15)).getTime() / 1000);
         var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
         currentTime = secondToDate((timestamp - create_time));
         currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
