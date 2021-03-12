@@ -8,11 +8,14 @@
 
     <link href="../static/images/favicon.ico" th:href="@{/images/touxiang.png}" rel="icon" type="image/x-ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
-
+    <link rel="stylesheet" type="text/css" href="../static/lib/live2d_demo-master/assets/waifu.css" th:href="@{/lib/live2d_demo-master/assets/waifu.css}"/>
 </head>
+
 <body>
+
+
 
 <!--导航-->
 <nav id="nav" class="gird-header" style="display: none">
@@ -69,11 +72,11 @@
 
 
         <div class="ui wechat-qr flowing popup transition hidden">
-            <img src="../static/images/oneStarWechat.jpg" th:src="@{/images/oneStarWechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
+            <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
             <div align="center">微信</div>
         </div>
         <div class="ui qq-qr flowing popup transition hidden">
-            <img src="../static/images/qq.jpg" th:src="@{/images/qq.jpg}" alt="" class="ui rounded image" style="width: 110px">
+            <img src="../static/images/qq.png" th:src="@{/images/qq.png}" alt="" class="ui rounded image" style="width: 110px">
             <div align="center">QQ</div>
         </div>
 
@@ -108,7 +111,7 @@
         </div>
     </div>
     <div class="ui stackable m-container-mini m-opacity grid">
-        <div class="m-margin-tb-tiny eight wide column" th:each="blog : ${recommendedBlogs}">
+        <div class="m-margin-tb-tiny four wide column" th:each="blog : ${recommendedBlogs}">
             <a href="#" class="class_outer" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                 <img src="../static/images/backimg1.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
                 <span class="class_cover" >
@@ -252,6 +255,7 @@
 </footer>
 
 
+<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
@@ -361,6 +365,50 @@
             console.log('Scrolled to waypoint!  ' + direction);
         }
     })
+
+
+
 </script>
+
+<!--<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>-->
+<!--&lt;!&ndash;小帅哥： https://unpkg.com/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json&ndash;&gt;-->
+<!--&lt;!&ndash;萌娘：https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json&ndash;&gt;-->
+<!--&lt;!&ndash;小可爱（女）：https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json&ndash;&gt;-->
+<!--&lt;!&ndash;小可爱（男）：https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json&ndash;&gt;-->
+<!--&lt;!&ndash;初音：https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json&ndash;&gt;-->
+
+<!--小狐狸: https://unpkg.com/live2d-widget-model-nico@1.0.5/assets/nico.model.json&lt;!&ndash;&lt;!&ndash;黑猫：https://unpkg.com/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash; 上边的不同链接显示的是不同的小人，这个可以根据需要来选择 下边的初始化部分，可以修改宽高来修改小人的大小，或者是鼠标移动到小人上的透明度，也可以修改小人在页面出现的位置。 &ndash;&gt;-->
+<!--<script>-->
+    <!--/*https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json*/-->
+    <!--L2Dwidget.init({ "model": { jsonPath:-->
+                <!--"https://unpkg.com/live2d-widget-model-nico@1.0.5/assets/nico.model.json",-->
+            <!--"scale": 1 }, "display": { "position": "right", "width": 110, "height": 150,-->
+            <!--"hOffset": 0, "vOffset": -20 }, "mobile": { "show": true, "scale": 0.5 },-->
+        <!--"react": { "opacityDefault": 0.8, "opacityOnHover": 0.1 } });-->
+<!--</script>-->
+
+<!--桌面小人-->
+<div class="waifu">
+    <div class="waifu-tips"></div>
+    <canvas id="live2d" class="live2d"></canvas>
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
+</div>
+<script src="../static/lib/live2d_demo-master/assets/waifu-tips.js" th:src="@{/lib/live2d_demo-master/assets/waifu-tips.js}"></script>
+<script src="../static/lib/live2d_demo-master/assets/live2d.js" th:src="@{/lib/live2d_demo-master/assets/live2d.js}"></script>
+<script type="text/javascript">
+    live2d_settings['modelId'] = 1;
+    live2d_settings['modelTexturesId'] = 87;
+    initModel("/lib/live2d_demo-master/assets/waifu-tips.json")
+</script>
+
 </body>
 </html>
